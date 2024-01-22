@@ -1,20 +1,14 @@
 <script setup>
-import Swal from 'sweetalert2'
+import {useTaskStore} from '@/stores/task'
 
-const showAlert = () =>{
-  Swal.fire({
-    toast: true,
-    icon: 'success',
-    title: '¡Tarea guardada satisfactoriamente!',
-    position: 'bottom-right',
-    iconColor: 'white',
-    showConfirmButton: false,
-    timer: 3000,
-    timerProgressBar: true,
-  });
-}
+const taskStore = useTaskStore();
+
+
 </script>
 <template>
-  
-  <button @click="showAlert">Hello world</button>
+  <div>
+    <button @click="taskStore.successAlert">Hello world</button>
+
+    {{taskStore.status}}
+  </div>
 </template>
