@@ -5,8 +5,10 @@ import Swal from 'sweetalert2'
 
 export const useTaskStore = defineStore('task', {
     state: () => ({
+        id: '',
         task: [],
         tasks: [],
+        deleteModal: false,
         form: {
             name: '',
             description: ''
@@ -35,6 +37,7 @@ export const useTaskStore = defineStore('task', {
                 let flag = 0;
                 this.getTasks();
                 this.successAlert('guardada')
+                this.reset();
             }).catch((e) => {
                 console.log(e);
             })
@@ -51,13 +54,25 @@ export const useTaskStore = defineStore('task', {
                 console.log(e);
             })
         },
-        async deleteTask(data){
-            await axios.get('/tasks/' + data.id).then((res) => {
+        async deleteTask(id){
+            await axios.delete('/tasks/' + id).then((res) => {
+                this.successAlert('eliminada');
                 this.getTasks();
-                this.successAlert('eliminada')
+                this.closeDeleteModal();
             }).catch((e) => {
                 console.log(e);
             })
+        },
+        reset(){
+            this.form.name = '';
+            this.form.description = '';
+        },
+        showDeleteModal(id){
+            this.id = id;
+            this.deleteModal = true;
+        },
+        closeDeleteModal(){
+            this.deleteModal = false;
         },
         async successAlert(flag) {
             await Swal.fire({
