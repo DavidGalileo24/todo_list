@@ -5,6 +5,7 @@ import Swal from 'sweetalert2'
 
 export const useTaskStore = defineStore('task', {
     state: () => ({
+        task: [],
         tasks: [],
     }),
     actions: {
@@ -15,11 +16,50 @@ export const useTaskStore = defineStore('task', {
                 console.log(e);
             })
         },
-        async successAlert() {
+        async getTaskById(data){
+            await axios.get('/tasks/' + data.id).then((res) => {
+                this.task = res.data;
+            }).catch((e) => {
+                console.log(e);
+            })
+        },
+        async storeTask(data){
+            await axios.post('/tasks', {
+                'name': data.name,
+                'description': data.description,
+            }).then((res) => {
+                let flag = 0;
+                this.getTasks();
+                this.successAlert('guardada')
+            }).catch((e) => {
+                console.log(e);
+            })
+        },
+        async updateTask(data){
+            await axios.put('/tasks/' + data.id, {
+                'name': data.name,
+                'description': data.description,
+            }).then((res) => {
+                let flag = 0;
+                this.getTasks();
+                this.successAlert('actualizada')
+            }).catch((e) => {
+                console.log(e);
+            })
+        },
+        async deleteTask(data){
+            await axios.get('/tasks/' + data.id).then((res) => {
+                this.getTasks();
+                this.successAlert('eliminada')
+            }).catch((e) => {
+                console.log(e);
+            })
+        },
+        async successAlert(flag) {
             await Swal.fire({
                 toast: true,
                 icon: 'success',
-                title: '¡Tarea guardada satisfactoriamente!',
+                title: '¡Tarea ' + flag + ' satisfactoriamente!',
                 position: 'bottom-right',
                 iconColor: 'white',
                 showConfirmButton: false,

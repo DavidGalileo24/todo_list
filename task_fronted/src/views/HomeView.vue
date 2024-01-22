@@ -1,6 +1,8 @@
 <script setup>
 import { onMounted } from 'vue';
-import {useTaskStore} from '@/stores/task'
+import PrimaryButton from '../components/PrimaryButton.vue';
+import Card from '../components/Card.vue';
+import {useTaskStore} from '@/stores/task';
 
 const taskStore = useTaskStore();
 onMounted(() => {
@@ -10,7 +12,18 @@ onMounted(() => {
 </script>
 <template>
   <div>
-    <button @click="taskStore.successAlert">Hello world</button>
-    {{taskStore.tasks}}
+    <!--<PrimaryButton @click="taskStore.successAlert">Hello world</PrimaryButton>
+    {{taskStore.tasks}}-->
+    <Card v-for="data in taskStore.tasks" :key="data.id">
+      <template #name>
+        {{ data.name }}
+      </template>
+      <template #description>
+        {{ data.description }}
+      </template>
+      <template #footer>
+        {{ data.created_date }}
+      </template>
+    </Card>
   </div>
 </template>
