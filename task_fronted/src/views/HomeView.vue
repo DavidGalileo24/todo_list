@@ -4,13 +4,13 @@ import {useTaskStore} from '@/stores/task'
 
 const taskStore = useTaskStore();
 onMounted(() => {
-  console.log('gg');
+  taskStore.getTasks();
 });
 
 </script>
 <template>
   <div>
     <button @click="taskStore.successAlert">Hello world</button>
-    {{taskStore.status}}
+    {{taskStore.tasks}}
   </div>
 </template>

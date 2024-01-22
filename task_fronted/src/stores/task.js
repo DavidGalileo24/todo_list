@@ -5,9 +5,16 @@ import Swal from 'sweetalert2'
 
 export const useTaskStore = defineStore('task', {
     state: () => ({
-        status: 'Desde store pa!'
+        tasks: [],
     }),
     actions: {
+        async getTasks(){
+            await axios.get('/tasks').then((res) => {
+                this.tasks = res.data.data;
+            }).catch((e) => {
+                console.log(e);
+            })
+        },
         async successAlert() {
             await Swal.fire({
                 toast: true,
