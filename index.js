@@ -8,5 +8,5 @@ const port = process.env.PORT;
 mongoose.connect(process.env.DATABASE_URL, {});
 
 app.use(express.json());
-app.use(tasksRoutes);
+app.use('/api', tasksRoutes);
 app.listen(port)
