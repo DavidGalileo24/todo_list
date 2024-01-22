@@ -9,7 +9,7 @@ defineProps({
 </script>
 <template>
     <div class="w-full cursor-pointer bg-white border border-gray-200 rounded-lg flex flex-col">
-        <h5 class="p-2 text-2xl font-bold tracking-tight text-gray-800">
+        <h5 class="p-2 text-xl font-bold tracking-tight text-gray-800">
             <slot name="name" />
         </h5>
         <p class="mt-2 p-2 font-normal text-gray-700">

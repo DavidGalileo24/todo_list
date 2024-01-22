@@ -7,6 +7,10 @@ export const useTaskStore = defineStore('task', {
     state: () => ({
         task: [],
         tasks: [],
+        form: {
+            name: '',
+            description: ''
+        }
     }),
     actions: {
         async getTasks(){
