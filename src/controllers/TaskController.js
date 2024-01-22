@@ -28,5 +28,13 @@ module.exports = {
             data: data,
             message: 'Update task successfully!'
         });
+    },
+    deleteTask: async(req, res) => {
+        const data = await TaskService.deleteTask(req.params.id);
+        res.json({
+            //data: data,
+            message: 'Deleted task successfully!'
+        });
+
     }
 }
