@@ -4,13 +4,13 @@ module.exports = {
     getTasks: async() => {
         return await Task.find();
     },
-    showIdTask: async(id) => {
+    getTaskById: async(id) => {
         return await Task.findById(id);
     },
     storeTask: async(data) => {
-        return await Task.createOne(data)
+        return await Task.create(data)
     },
-    updateTask: async(id) => {
+    updateTask: async(id, data) => {
         return await Task.findByIdAndUpdate(id, data);
     },
     deleteTask: async(id) => {
