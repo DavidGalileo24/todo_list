@@ -1,14 +1,16 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
 import Swal from 'sweetalert2'
-
+import { initFlowbite } from 'flowbite'
 
 export const useTaskStore = defineStore('task', {
     state: () => ({
         id: '',
         task: [],
         tasks: [],
+        edit: '',
         deleteModal: false,
+        sidebar: '',
         form: {
             name: '',
             description: ''
@@ -23,33 +25,36 @@ export const useTaskStore = defineStore('task', {
             })
         },
         async getTaskById(data){
-            await axios.get('/tasks/' + data.id).then((res) => {
+            await axios.get('/tasks/' + data._id).then((res) => {
                 this.task = res.data;
             }).catch((e) => {
                 console.log(e);
             })
         },
         async storeTask(data){
+            console.log('entra en store', data);
             await axios.post('/tasks', {
                 'name': data.name,
-                'description': data.description,
+                'description': data.description
             }).then((res) => {
                 let flag = 0;
                 this.getTasks();
-                this.successAlert('guardada')
+                this.successAlert('guardada');
                 this.reset();
             }).catch((e) => {
                 console.log(e);
             })
         },
-        async updateTask(data){
-            await axios.put('/tasks/' + data.id, {
+        async updateTask(data, id){
+            console.log('entra en update', data);
+            await axios.put('/tasks/' + id, {
                 'name': data.name,
                 'description': data.description,
             }).then((res) => {
                 let flag = 0;
                 this.getTasks();
-                this.successAlert('actualizada')
+                this.successAlert('actualizada');
+                this.reset();
             }).catch((e) => {
                 console.log(e);
             })
@@ -62,6 +67,17 @@ export const useTaskStore = defineStore('task', {
             }).catch((e) => {
                 console.log(e);
             })
+        },
+        getStoreUpdateMethod(data, id){
+            id ? this.updateTask(data, id) : this.storeTask(data);
+        },
+        editData(data){
+            let edit = this.tasks.find((el) => el._id == data._id);
+            this.edit = data;
+            if(edit){
+                this.form.name = edit.name;
+                this.form.description = edit.description;
+            }
         },
         reset(){
             this.form.name = '';

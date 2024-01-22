@@ -34,7 +34,7 @@ defineProps({
             {{ data.description }}
           </template>
           <template #footer>
-              <PrimaryButton class="mr-1">
+              <PrimaryButton @click="taskStore.editData(data)" class="mr-1" data-drawer-show="drawer-navigation" aria-controls="drawer-navigation" >
                 <i class="fa-solid fa-rotate"></i>
               </PrimaryButton>
               <SecondaryButton class="" @click="taskStore.showDeleteModal(data._id)">

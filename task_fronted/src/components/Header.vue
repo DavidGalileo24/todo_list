@@ -1,6 +1,5 @@
 <script setup>
 import { onMounted } from 'vue'
-import { initFlowbite } from 'flowbite'
 import PrimaryButton from './PrimaryButton.vue';
 import InputLabel from './InputLabel.vue';
 import TextInput from './TextInput.vue';
@@ -8,10 +7,6 @@ import Textarea from './Textarea.vue';
 import {useTaskStore} from '@/stores/task';
 
 const taskStore = useTaskStore();
-
-onMounted(() => {
-    initFlowbite();
-})
 
 </script>
 <template>
@@ -29,8 +24,10 @@ onMounted(() => {
             <i class="fa-solid fa-xmark text-xl"></i>
         </button>
         <div class="mt-7">
-          <form @submit.prevent="taskStore.storeTask(taskStore.form)" action="" class="bg-gray-100 p-2 rounded-md">
-            <h3 class="text-center text-lg font-semibold">Nueva tarea</h3>
+          <form @submit.prevent="taskStore.getStoreUpdateMethod(taskStore.form, taskStore.edit._id)" action="" class="bg-gray-100 p-2 rounded-md">
+            <h3 class="text-center text-lg font-semibold">
+              {{ taskStore.edit == '' ? 'Nueva tarea' : 'Editar tarea' }}
+            </h3>
             <div class="mt-4">
               <InputLabel for="abbreviation" value="Nombre" />
               <TextInput v-model="taskStore.form.name" type="text" class="block w-full" />
@@ -40,7 +37,9 @@ onMounted(() => {
               <Textarea v-model="taskStore.form.description" class="block w-full" />
             </div>
             <div class="mt-3">
-              <PrimaryButton class="w-full">Guardar registro</PrimaryButton>
+              <PrimaryButton class="w-full" data-drawer-hide="drawer-navigation" aria-controls="drawer-navigation" >
+              {{ taskStore.edit == '' ? 'Guardar registro' : 'Actualizar registro' }}
+              </PrimaryButton>
             </div>
           </form>
         </div>
