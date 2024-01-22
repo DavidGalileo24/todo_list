@@ -17,7 +17,7 @@ onMounted(() => {
     <Header />
     <div class="mt-5 p-5">
       <!--card-->
-      <div class="grid grid-cols-3 gap-2">
+      <div class="grid grid-cols-4 gap-3">
         <Card v-for="data in taskStore.tasks" :key="data.id" class="">
           <template #name>
             {{ data.name }}
@@ -26,8 +26,8 @@ onMounted(() => {
             {{ data.description }}
           </template>
           <template #footer>
-              <PrimaryButton>Actualizar</PrimaryButton>
-              <SecondaryButton>Eliminar</SecondaryButton>
+              <PrimaryButton class="mr-1">Actualizar</PrimaryButton>
+              <SecondaryButton class="">Eliminar</SecondaryButton>
           </template>
         </Card>
       </div>
