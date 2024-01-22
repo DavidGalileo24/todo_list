@@ -8,7 +8,7 @@ defineProps({
 });
 </script>
 <template>
-    <div class="w-full bg-white border border-gray-200 rounded-lg flex flex-col">
+    <div class="w-full cursor-pointer bg-white border border-gray-200 rounded-lg flex flex-col">
         <h5 class="p-2 text-2xl font-bold tracking-tight text-gray-800">
             <slot name="name" />
         </h5>

@@ -26,8 +26,8 @@ onMounted(() => {
             {{ data.description }}
           </template>
           <template #footer>
-              <PrimaryButton class="mr-1">Actualizar</PrimaryButton>
-              <SecondaryButton class="">Eliminar</SecondaryButton>
+              <PrimaryButton class="mr-1"><i class="fa-solid fa-rotate"></i></PrimaryButton>
+              <SecondaryButton class=""><i class="fa-solid fa-trash-can"></i></SecondaryButton>
           </template>
         </Card>
       </div>
