@@ -30,7 +30,7 @@ onMounted(() => {
         </button>
         <div class="mt-7">
           <form @submit.prevent="taskStore.storeTask(taskStore.form)" action="" class="bg-gray-100 p-2 rounded-md">
-            <h3 class="text-center text-lg font-semibold">Nuevo registro</h3>
+            <h3 class="text-center text-lg font-semibold">Nueva tarea</h3>
             <div class="mt-4">
               <InputLabel for="abbreviation" value="Nombre" />
               <TextInput v-model="taskStore.form.name" type="text" class="block w-full" />

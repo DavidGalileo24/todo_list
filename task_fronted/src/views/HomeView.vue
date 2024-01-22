@@ -25,7 +25,7 @@ defineProps({
     <Header />
     <div class="mt-5 p-5">
       <!--card-->
-      <div class="grid grid-cols-4 gap-3">
+      <div class="grid sm:grid-cols-3 md:grid-cols-4 grid-cols-2 gap-3">
         <Card v-for="data in taskStore.tasks" :key="data.id" class="">
           <template #name>
             {{ data.name }}
