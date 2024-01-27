@@ -27,7 +27,7 @@ defineProps({
       <span class="" v-if="taskStore.tasks == ''">No se ha agregado ninguna tarea aún</span>
       <!--card-->
       <div class="grid sm:grid-cols-3 md:grid-cols-4 grid-cols-2 gap-3">
-        <Card v-for="data in taskStore.tasks" :key="data.id" class="">
+        <Card v-for="data in taskStore.tasks" :key="data.id" class="text-left ">
           <template #name>
             {{ data.name }}
           </template>
@@ -35,10 +35,10 @@ defineProps({
             {{ data.description }}
           </template>
           <template #footer>
-              <PrimaryButton @click="taskStore.editData(data)" class="mr-1" data-drawer-show="drawer-navigation" aria-controls="drawer-navigation" >
+              <PrimaryButton @click="taskStore.editData(data)" v-tooltip="'Actualizar tarea'" class="mr-1" data-drawer-show="drawer-navigation" aria-controls="drawer-navigation" >
                 <i class="fa-solid fa-rotate"></i>
               </PrimaryButton>
-              <SecondaryButton class="" @click="taskStore.showDeleteModal(data._id)">
+              <SecondaryButton @click="taskStore.showDeleteModal(data._id)" v-tooltip="'Eliminar tarea'">
                 <i class="fa-solid fa-trash-can"></i>
               </SecondaryButton>
           </template>
