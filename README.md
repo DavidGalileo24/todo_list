@@ -21,6 +21,9 @@ Agregar variables de entorno en el proyecto.
 
 ![App Screenshot](https://i.postimg.cc/9X7r7g1D/Screenshot-from-2024-01-22-11-35-21.png)
 
+El siguiente paso será crear la base de datos con su respectiva colección desde MongoDB Compass (o el programa preferido para gestión de bases de datos con MongoDB:
+![App Screenshot](https://i.postimg.cc/zBTYnVdP/Captura.png)
+
 ```bash
   npm run dev
 ```
