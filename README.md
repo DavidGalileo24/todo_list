@@ -21,6 +21,9 @@ Agregar variables de entorno en el proyecto.
 
 ![App Screenshot](https://i.postimg.cc/9X7r7g1D/Screenshot-from-2024-01-22-11-35-21.png)
 
+```bash
+  npm run dev
+```
 El proyecto backend estará corriendo en el dominio local http://localhost:8080/api, donde se proporciona la colección de Postman y la colección de MongoBD mediante correo electrónico con los endpoints y las colecciones para poder realizar las solicitudes HTTP y gestionar las operaciones CRUD desde el backend.
 
 
