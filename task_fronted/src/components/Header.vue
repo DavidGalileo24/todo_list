@@ -14,8 +14,8 @@ const taskStore = useTaskStore();
       <div class="mx-5">
         <!-- drawer init and show -->
         <div class="text-center">
-          <button class="text-blue-700 hover:bg-blue-800 hover:text-white focus:ring-blue-300 font-medium rounded-lg text-xl px-3 py-2 focus:outline-none border border-blue-500" type="button" data-drawer-target="drawer-navigation" data-drawer-show="drawer-navigation" aria-controls="drawer-navigation">
-            <i class="fa-solid fa-bars"></i>
+          <button class="text-blue-700 hover:bg-blue-800 hover:text-white focus:ring-blue-300 font-medium rounded-lg text-xl px-3 py-1 focus:outline-none border border-blue-500" type="button" data-drawer-target="drawer-navigation" data-drawer-show="drawer-navigation" aria-controls="drawer-navigation">
+            <i class="fa-solid fa-plus"></i>
           </button>
         </div>
       <!-- drawer component -->

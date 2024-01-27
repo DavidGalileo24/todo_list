@@ -23,7 +23,8 @@ defineProps({
 <template>
   <div class="">
     <Header />
-    <div class="mt-5 p-5">
+    <div class="mt-5 p-5 text-center">
+      <span class="" v-if="taskStore.tasks == ''">No se ha agregado ninguna tarea aún</span>
       <!--card-->
       <div class="grid sm:grid-cols-3 md:grid-cols-4 grid-cols-2 gap-3">
         <Card v-for="data in taskStore.tasks" :key="data.id" class="">
