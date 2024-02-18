@@ -1,6 +1,6 @@
 # Prueba tećnica To Do List
 
-Prueba tećnica para el puesto de desarrollador web jr utilizando las tecnologías requeridas.
+TO DO List usando Node JS bara el backend y Vue 3 para frontend y MongoDB para el manejo de base de datos.
 
 
 ## Backend
